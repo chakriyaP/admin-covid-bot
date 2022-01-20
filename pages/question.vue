@@ -7,7 +7,7 @@
           <v-tab>คำถามที่พบบ่อย</v-tab>
           <v-tab>
             <a
-              href="https://docs.google.com/spreadsheets/d/1oTiJrX3g4gOlMIY18-4kbu0FS_WfooQ_l0h-1UItylg/edit?resourcekey&fbclid=IwAR1zb4RiEtWG689QDjowaBZkJGwfFTC-_ZQuLVztWH6G7cWEzCnKh53TEGk#gid=736174848"
+              href="https://docs.google.com/spreadsheets/d/1oTiJrX3g4gOlMIY18-4kbu0FS_WfooQ_l0h-1UItylg/edit?resourcekey&fbclid=IwAR1zb4RiEtWG689QDjowaBZkJGwfFTC-_ZQuLVztWH6G7cWEzCnKh53TEGk#gid=789109387"
               >รายงานผล</a
             >
           </v-tab>
@@ -23,6 +23,39 @@
         <div class="titel">
           <h4>หมวด {{ index }}</h4>
           <button>เพิ่มคำถาม</button>
+
+          <!-- <v-dialog v-model="dialog" persistent max-width="600px">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="btn" v-bind="attrs" v-on="on"> เพิ่มคำถาม </v-btn>
+            </template>
+            <v-card>
+              <v-card-title>
+                <span class="text-h5">เพิ่มคำถาม ในหมวด {{ index }}</span>
+              </v-card-title>
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <h3>คำถาม-คำตอบ</h3>
+                    <v-col cols="12">
+                      <v-text-field label="คำถาม" required></v-text-field>
+                    </v-col>
+                    <v-col cols="12" class="aser">
+                      <v-text-field label="คำตอบ" required></v-text-field>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue darken-1" text @click="dialog = false">
+                  ยกเลิก
+                </v-btn>
+                <v-btn color="blue darken-1" text @click="dialog = false">
+                  บันทึก
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog> -->
         </div>
 
         <v-simple-table>
@@ -30,7 +63,7 @@
             <thead>
               <tr>
                 <th class="text-left">คำถาม</th>
-                <th class="text-left">คำตอบ</th>
+                <th class="text-center">คำตอบ</th>
               </tr>
             </thead>
             <tbody>
@@ -42,12 +75,50 @@
           </template>
         </v-simple-table>
       </div>
-      <button>เพิ่มหมวดคำถาม</button>
+
+      <v-dialog v-model="dialog" persistent max-width="600px">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="btn" dark v-bind="attrs" v-on="on">
+            เพิ่มหมวดคำถาม
+          </v-btn>
+        </template>
+        <v-card>
+          <v-card-title>
+            <span class="text-h5">เพิ่มหมวดคำถาม</span>
+          </v-card-title>
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <h3>หมวดคำถาม</h3>
+                <v-col cols="12">
+                  <v-text-field label="หมวดคำถาม" required></v-text-field>
+                </v-col>
+                <hr />
+                <h3>คำถาม-คำตอบ</h3>
+                <v-col cols="12">
+                  <v-text-field label="คำถาม" required></v-text-field>
+                </v-col>
+                <v-col cols="12" class="aser">
+                  <v-text-field label="คำตอบ" required></v-text-field>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue darken-1" text @click="dialog = false">
+              ยกเลิก
+            </v-btn>
+            <v-btn color="blue darken-1" text @click="dialog = false">
+              บันทึก
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </section>
   </div>
 </template>
-  </div>
-</template>
+ 
 <script>
 export default {
   data() {
@@ -63,6 +134,9 @@ export default {
       //     "See the Firestore documentation": "Yes",
       //   },
       // },
+      dialog: false,
+
+      // question: false,
     };
   },
   mounted() {
@@ -122,7 +196,7 @@ export default {
   }
 }
 
-button {
+.btn {
   background-color: #96c5cb;
   padding: 6px 20px;
   color: white;
@@ -134,9 +208,18 @@ a {
   text-decoration: none;
   color: gray;
 }
+th {
+  text-align: center;
+}
 
 ::v-deep .v-application a {
   color: gray;
   font-size: 3rem;
+}
+::v-deep .v-application .text-h5 {
+  font-family: "Kanit", sans-serif !important;
+}
+.aser {
+  margin-top: -10px;
 }
 </style>
