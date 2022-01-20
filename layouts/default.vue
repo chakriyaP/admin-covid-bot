@@ -10,7 +10,7 @@
           contain
         />
       </a>
-      <h2>Covid-19 Tracker</h2>
+      <h3>Covid-19 Tracker</h3>
       <v-spacer />
       <a
         v-for="(item, i) in items"

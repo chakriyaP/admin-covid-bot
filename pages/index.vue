@@ -95,7 +95,7 @@ main {
   flex-direction: column;
   width: 80%;
   height: 100%;
-  padding: 8px 0 0 8px;
+  padding: 16px 0;
 }
 
 .details h2 {
